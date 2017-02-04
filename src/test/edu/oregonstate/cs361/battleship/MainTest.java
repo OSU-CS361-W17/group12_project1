@@ -27,24 +27,26 @@ class MainTest {
         Main.main(null);
         awaitInitialization();
     }
+
     @Test
-    public void testsinkcheck(){
+    public void testsinkcheck() {
         BattleshipModel bsm = new BattleshipModel();
         bsm.destroyer.setHits(2);
-        assertEquals(bsm.sinkcheck(bsm.destroyer()),1);
-        assertEquals(bsm.sinkcheck(bsm.cruiser()),0);
+        assertEquals(bsm.sinkcheck(bsm.destroyer()), 1);
+        assertEquals(bsm.sinkcheck(bsm.cruiser()), 0);
     }
+
     @Test
-    public void testcheckWin(){
+    public void testcheckWin() {
         BattleshipModel bsm = new BattleshipModel();
-        assertEquals(bsm.checkWin(),0);//no winner
+        assertEquals(bsm.checkWin(), 0);//no winner
 
         bsm.destroyer.setHits(5);
         bsm.cruiser.setHits(5);
         bsm.submarine.setHits(5);
         bsm.aircraftCarrier.setHits(5);
         bsm.battleship.setHits(5);
-        assertEquals(bsm.checkWin(),1);//computer should win
+        assertEquals(bsm.checkWin(), 1);//computer should win
 
         bsm.battleship.setHits(0);
         bsm.computer_destroyer.setHits(5);
@@ -52,9 +54,10 @@ class MainTest {
         bsm.computer_submarine.setHits(5);
         bsm.computer_aircraftCarrier.setHits(5);
         bsm.computer_battleship.setHits(5);
-        assertEquals(bsm.checkWin(),2)//player should win
+        assertEquals(bsm.checkWin(), 2)//player should win
 
     }
+
     @AfterAll
     public static void afterClass() {
         Spark.stop();
@@ -64,14 +67,24 @@ class MainTest {
     public void testGetModel() {
         TestResponse res = request("GET", "/model");
         assertEquals(200, res.status);
-        assertEquals("MODEL",res.body);
+        assertEquals("MODEL", res.body);
     }
 
     @Test
     public void testPlaceShip() {
         TestResponse res = request("POST", "/placeShip/aircraftCarrier/1/1/horizontal");
         assertEquals(200, res.status);
-        assertEquals("SHIP",res.body);
+        assertEquals("SHIP", res.body);
+    }
+
+    @Test
+    public void testHit() {
+        assertEquals(check_fire(new BattleshipModel(), 2,3),1); //should hit an aircraft carrier
+    }
+
+    @Test
+    public void testMiss() {
+        assertEquals(check_fire(new BattleshipModel(), 1,1),0); //should miss everything
     }
 
     private TestResponse request(String method, String path) {
@@ -121,6 +134,7 @@ class MainTest {
         assertEquals(onBoard(bsm.destroyer, 10, 10, "across"),0);
 
     }
+
 
 
 }
