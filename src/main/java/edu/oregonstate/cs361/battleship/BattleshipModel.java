@@ -129,14 +129,14 @@ public class BattleshipModel {
 		on placing a ship on the board. 
 	
 	**************************************/
-	public void isShipPlaced(ship type){ 
+	public boolean isShipPlaced(ship type){ 
 	
-	if(sp.placed == true){ //if the ship has been placed return true, yes the ship has been placed
+	if(type.placed == true){ //if the ship has been placed return true, yes the ship has been placed
 			return 1;
 		}
 		
 		else{ //if the ship has not been placed update the boolean to show it has been placed
-			sp.placed = true; //the ship will be placed after this function check
+			type.placed = true; //the ship will be placed after this function check
 			return 0; //the ship was not previously placed
 		}
 		
