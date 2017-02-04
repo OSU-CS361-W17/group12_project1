@@ -125,7 +125,7 @@ class MainTest {
 
         assertEquals(onBoard(bsm.battlship, 1, 1, "down"),1);
         assertEquals(onBoard(bsm.aircraftcarrier, 7, 7, "down"),0);
-        assertEquals(onBoard(bsm.airceship, 8, 8, "across"),0);
+        assertEquals(onBoard(bsm.aircraftcarrier, 8, 8, "across"),0);
         assertEquals(onBoard(bsm.crusier, 9, 9, "down"),0);
         assertEquals(onBoard(bsm.crusier, 9, 9, "across"),0);
         assertEquals(onBoard(bsm.submarine, 9, 9, "down"),0);
@@ -134,7 +134,35 @@ class MainTest {
         assertEquals(onBoard(bsm.destroyer, 10, 10, "across"),0);
 
     }
-
+	
+	@test
+	
+	pubic void testIsShipPlaced(){
+		
+		//create a new battlehsip model
+		BattleshipModel bsm = new BattleshipModel();
+		
+		
+		//these tests will see if when a ship is not placed if the function returns 0
+		//each test is for a different ship type
+        assertEquals(bsm.isShipPlaced(aircraftCarrier),0);
+		assertEquals(bsm.isShipPlaced(battleship),0);
+		assertEquals(bsm.isShipPlaced(crusier),0);
+		assertEquals(bsm.isShipPlaced(submarine),0);
+		assertEquals(bsm.isShipPlaced(destroyer),0);
+		
+		//now that the ships have been placed the boolean "placed" should be updated to true
+		
+		assertEquals(bsm.isShipPlaced(aircraftCarrier),1);
+		assertEquals(bsm.isShipPlaced(battleship),1);
+		assertEquals(bsm.isShipPlaced(crusier),1);
+		assertEquals(bsm.isShipPlaced(submarine),1);
+		assertEquals(bsm.isShipPlaced(destroyer),1);
+		
+		
+		
+		
+	}
 
 
 }
