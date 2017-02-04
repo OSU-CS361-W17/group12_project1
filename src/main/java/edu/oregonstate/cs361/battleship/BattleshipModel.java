@@ -143,4 +143,30 @@ public class BattleshipModel {
 		
 	}
 
+
+    //Check for hits, update hit ships in model, return 1 for a hit, 0 for a miss
+    public int check_fire(BattleshipModel model, int col, int row) {
+        //using hard-coded computer ship locations:
+        if (col == 2) && (row >= 2) && (row <7) {
+            //Hit aircraft carrier
+            model.computer_aircraftCarrier.hits++;
+        }
+        else if (row == 8) && (col >= 2) && (col < 6) {
+            model.computer_battleship.hits++; //hit battleship
+        }
+        else if (col == 4) && (row >= 1) && (row < 4) {
+            model.computer_cruiser.hits++; //hit cruiser
+        }
+        else if (col == 7) && (row >= 3) && (row < 5) {
+            model.computer_destroyer.hits++;
+        }
+        else if (col == 9) && (row >=6) && (row < 9) {
+            model.computer_submarine.hits++;
+        }
+        else
+            return 0;
+
+        return 1;
+    }
+
 }

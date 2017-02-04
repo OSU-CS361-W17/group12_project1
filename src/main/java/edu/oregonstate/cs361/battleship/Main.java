@@ -1,6 +1,12 @@
 package edu.oregonstate.cs361.battleship;
 
+
+
+import com.google.gson.Gson;
 import spark.Request;
+import spark.Response;
+
+
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
@@ -36,6 +42,17 @@ public class Main {
 
     //Similar to placeShip, but with firing.
     private static String fireAt(Request req) {
+        String row = req.params(":row");
+        String col = req.params(":col");
+
+        //need to convert game state first
+        if (check_fire(req.body.data, Integer.parseInt(col), Integer.parseInt(row)){
+            //hit
+        }
+        else {
+            //miss
+        }
+
         return null;
     }
 
