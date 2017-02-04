@@ -11,6 +11,7 @@ public class BattleshipModel {
         int hits = 0;
         int start[];
         int end[];
+		boolean placed = false; //checks if this ship type has been placed already 
 
         public ship(int l, String n) {//constructor, initializes name and length from arguments
             length = l;
@@ -50,7 +51,7 @@ public class BattleshipModel {
         computer_aircraftCarrier.setStart(2, 2);
         computer_aircraftCarrier.setEnd(2,7);
         computer_battleship.setStart(2,8);
-        computer_aircraftCarrier.setEnd(6,8);
+        computer_battleship.setEnd(6,8);
         computer_cruiser.setStart(4,1);
         computer_cruiser.setEnd(4,4);
         computer_destroyer.setStart(7,3);
@@ -115,6 +116,32 @@ public class BattleshipModel {
         //
         return 0;
     }
+	
+	/*************************************
+		This function takes in a ship type to be placed on the board
+		and checks if it has already been placed. 
+		
+		If the ship has been placed the function will return 1.
+		If the ship has not been placed the function will return 0.
+		
+		As a result of this function if the ship was not previously placed it's
+		boolean placed will be updated to true because this function is a check
+		on placing a ship on the board. 
+	
+	**************************************/
+	public void isShipPlaced(ship type){ 
+	
+	if(sp.placed == true){ //if the ship has been placed return true, yes the ship has been placed
+			return 1;
+		}
+		
+		else{ //if the ship has not been placed update the boolean to show it has been placed
+			sp.placed = true; //the ship will be placed after this function check
+			return 0; //the ship was not previously placed
+		}
+		
+		
+	}
 
 
     //Check for hits, update hit ships in model, return 1 for a hit, 0 for a miss
