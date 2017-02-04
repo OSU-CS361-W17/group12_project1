@@ -104,6 +104,23 @@ class MainTest {
             return new Gson().fromJson(body, HashMap.class);
         }
     }
+    @test
+    public void testOnBoard(){
+        BattleshipModel bsm = new Battlesraftcarrier, 7, 7, "across"),0);
+        assertEquals(onBoard(bsm.battleship, 8, 8, "down"),0);
+        assertEquals(onBoard(bsm.battlhipModel();
+
+        assertEquals(onBoard(bsm.battlship, 1, 1, "down"),1);
+        assertEquals(onBoard(bsm.aircraftcarrier, 7, 7, "down"),0);
+        assertEquals(onBoard(bsm.airceship, 8, 8, "across"),0);
+        assertEquals(onBoard(bsm.crusier, 9, 9, "down"),0);
+        assertEquals(onBoard(bsm.crusier, 9, 9, "across"),0);
+        assertEquals(onBoard(bsm.submarine, 9, 9, "down"),0);
+        assertEquals(onBoard(bsm.submarine, 9, 9, "across"),0);
+        assertEquals(onBoard(bsm.destroyer, 10, 10, "down"),0);
+        assertEquals(onBoard(bsm.destroyer, 10, 10, "across"),0);
+
+    }
 
 
 }
