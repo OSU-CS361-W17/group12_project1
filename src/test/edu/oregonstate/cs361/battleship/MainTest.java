@@ -27,7 +27,34 @@ class MainTest {
         Main.main(null);
         awaitInitialization();
     }
+    @Test
+    public void testsinkcheck(){
+        BattleshipModel bsm = new BattleshipModel();
+        bsm.destroyer.setHits(2);
+        assertEquals(bsm.sinkcheck(bsm.destroyer()),1);
+        assertEquals(bsm.sinkcheck(bsm.cruiser()),0);
+    }
+    @Test
+    public void testcheckWin(){
+        BattleshipModel bsm = new BattleshipModel();
+        assertEquals(bsm.checkWin(),0);//no winner
 
+        bsm.destroyer.setHits(5);
+        bsm.cruiser.setHits(5);
+        bsm.submarine.setHits(5);
+        bsm.aircraftCarrier.setHits(5);
+        bsm.battleship.setHits(5);
+        assertEquals(bsm.checkWin(),1);//computer should win
+
+        bsm.battleship.setHits(0);
+        bsm.computer_destroyer.setHits(5);
+        bsm.computer_cruiser.setHits(5);
+        bsm.computer_submarine.setHits(5);
+        bsm.computer_aircraftCarrier.setHits(5);
+        bsm.computer_battleship.setHits(5);
+        assertEquals(bsm.checkWin(),2)//player should win
+
+    }
     @AfterAll
     public static void afterClass() {
         Spark.stop();
@@ -76,6 +103,23 @@ class MainTest {
         public Map<String,String> json() {
             return new Gson().fromJson(body, HashMap.class);
         }
+    }
+    @test
+    public void testOnBoard(){
+        BattleshipModel bsm = new Battlesraftcarrier, 7, 7, "across"),0);
+        assertEquals(onBoard(bsm.battleship, 8, 8, "down"),0);
+        assertEquals(onBoard(bsm.battlhipModel();
+
+        assertEquals(onBoard(bsm.battlship, 1, 1, "down"),1);
+        assertEquals(onBoard(bsm.aircraftcarrier, 7, 7, "down"),0);
+        assertEquals(onBoard(bsm.airceship, 8, 8, "across"),0);
+        assertEquals(onBoard(bsm.crusier, 9, 9, "down"),0);
+        assertEquals(onBoard(bsm.crusier, 9, 9, "across"),0);
+        assertEquals(onBoard(bsm.submarine, 9, 9, "down"),0);
+        assertEquals(onBoard(bsm.submarine, 9, 9, "across"),0);
+        assertEquals(onBoard(bsm.destroyer, 10, 10, "down"),0);
+        assertEquals(onBoard(bsm.destroyer, 10, 10, "across"),0);
+
     }
 
 
